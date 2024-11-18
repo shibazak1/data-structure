@@ -1,0 +1,76 @@
+#include <stdio.h>
+
+long long MaxPairwiseProductFast(int arr[],int n){
+
+    int max_indx1 =-1;
+    
+    for(int i=0;i<n;++i){
+	if(max_indx1==-1||arr[max_indx1]<arr[i]){
+
+	    max_indx1 = i;
+	}
+
+	
+    }
+    int max_indx2 =-1;
+    for(int k=0;k<n;++k){
+	if(max_indx2 !=max_indx1 && max_indx2 ==-1 || arr[max_indx2]<arr[k]){
+
+	    max_indx2 = k;
+	}
+
+	
+    }
+
+    
+    return (long long)arr[max_indx1]*arr[max_indx2];
+}
+
+
+long long MaxPairwiseProduct(int arr[],int n){
+
+    long long result = 0;
+
+    for(int i=0;i<n;++i){
+
+	for(int k=i+1;k<n;++k){
+
+	    if(result< arr[i]*arr[k]){
+
+		result =((long long)arr[i]*arr[k]);
+	    }
+
+	}
+
+
+    }
+
+
+    return result;
+}
+
+
+
+int main(void){
+
+    int n;
+    scanf("%d\n",&n);
+    int arr[n];
+    for(int i=0;i<n;i++){
+	scanf("%d",&arr[i]);
+    }
+
+    for(int j=0;j<n;j++){
+
+	printf("%d\n",arr[j]);
+    }
+
+    long long result =  MaxPairwiseProductFast(arr,n);
+    printf("%lld\n",result);
+
+    return 0;
+    
+
+
+
+}
